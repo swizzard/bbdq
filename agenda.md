@@ -2,44 +2,43 @@
 
 ## backend
 
-- [ ] user mgmt w/auth0
-  - [ ] yadda
 - [ ] db
-  - [ ] user
-  - [ ] bot
-    - [ ] figure out bot data model
+  - [x] user
+  - [x] bot
+    - [x] figure out bot data model
     - tracery grammar
     - schedule
-      - constraints?
+      - ~~constraints?~~
     - on/off
     - public (bool)
     - atproto data
-      - what data?
+      - ~~what data?~~
+- [ ] user mgmt w/auth0
+  - [ ] yadda
+  - do we actually need users or can ppl just create/edit 1 bot at a time?
 - [ ] api
-  - [ ] user
-    - [ ] login
-    - [ ] signup
-    - [ ] logout
   - [ ] bot
     - [ ] create
     - [ ] edit
     - [ ] delete
+  - [ ] user (maybe)
+    - [ ] login
+    - [ ] signup
+    - [ ] logout
 
 ## frontend
 
-- [ ] user
-  - [ ] login
-  - [ ] signup
-  - [ ] logout
 - [ ] bot
   - [ ] create
   - [ ] edit
   - [ ] delete
-  - [ ] list
+  - [ ] list (iff user)
     - controls in list? which?
+- [ ] user (maybe)
+  - [ ] login
+  - [ ] signup
+  - [ ] logout
 
 ## cron server
 
-- separate / not redwood
-- node server living on aws v.s.
-  - [cron-async](https://www.npmjs.com/package/cron-async)
+- [botworker](./botworker/README.md)
