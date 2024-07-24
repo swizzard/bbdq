@@ -97,6 +97,63 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@atproto/api@npm:^0.12.25":
+  version: 0.12.25
+  resolution: "@atproto/api@npm:0.12.25"
+  dependencies:
+    "@atproto/common-web": ^0.3.0
+    "@atproto/lexicon": ^0.4.0
+    "@atproto/syntax": ^0.3.0
+    "@atproto/xrpc": ^0.5.0
+    await-lock: ^2.2.2
+    multiformats: ^9.9.0
+    tlds: ^1.234.0
+  checksum: ab9abae984f25aaa9f68925df9b83e01de59601d08ddb38bafae39367834c1fa836b61ae291fafeb23e653487ed4dd1510aa6f1b62f0a26947343807abda4a69
+  languageName: node
+  linkType: hard
+
+"@atproto/common-web@npm:^0.3.0":
+  version: 0.3.0
+  resolution: "@atproto/common-web@npm:0.3.0"
+  dependencies:
+    graphemer: ^1.4.0
+    multiformats: ^9.9.0
+    uint8arrays: 3.0.0
+    zod: ^3.21.4
+  checksum: eff88bc4ce6a5edf1998d92469bd503a337c1576625d7d914b2d611b98a083fb83cee94c56b4c71e385a431fae1f9e69fda9ce4b64f0795f935ed7796f993ce8
+  languageName: node
+  linkType: hard
+
+"@atproto/lexicon@npm:^0.4.0":
+  version: 0.4.0
+  resolution: "@atproto/lexicon@npm:0.4.0"
+  dependencies:
+    "@atproto/common-web": ^0.3.0
+    "@atproto/syntax": ^0.3.0
+    iso-datestring-validator: ^2.2.2
+    multiformats: ^9.9.0
+    zod: ^3.21.4
+  checksum: c65aba074df156639ddf505c177920cd97aec1f6f916ff9e441b5203c6255e216649bca14a6fe8b0f9803d15e0df2654697c00c08f47ed250efcf6b089b7f730
+  languageName: node
+  linkType: hard
+
+"@atproto/syntax@npm:^0.3.0":
+  version: 0.3.0
+  resolution: "@atproto/syntax@npm:0.3.0"
+  checksum: 9deed9b6fe393adf22d7ca2a5972e54510c9cc678d27306e383501a70c80770ed3c2c413b9603ab0162ef26079b27ccce8927b122531525c6468f5052f1a6c43
+  languageName: node
+  linkType: hard
+
+"@atproto/xrpc@npm:^0.5.0":
+  version: 0.5.0
+  resolution: "@atproto/xrpc@npm:0.5.0"
+  dependencies:
+    "@atproto/lexicon": ^0.4.0
+    zod: ^3.21.4
+  checksum: 29705ffa6e1fc67eac70f0f67a52f31946ff37d2825a23a43ef2fc17fb3249a39525e9852212bf3d41c09647e645bca5161d29a9f6562011183854c252c8b199
+  languageName: node
+  linkType: hard
+
 "@babel/cli@npm:7.24.5":
   version: 7.24.5
   resolution: "@babel/cli@npm:7.24.5"
@@ -5801,6 +5858,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/tracery-grammar@npm:^2.7.4":
+  version: 2.7.4
+  resolution: "@types/tracery-grammar@npm:2.7.4"
+  checksum: b71c19a750cf5a0d8dad4089b24eb7612e06971f7d8932af52b0fe99bbc4fe82a2f4aa14fa7b2b8de14dfd0555a23e0722425297bbebd6675855ace71815f846
+  languageName: node
+  linkType: hard
+
 "@types/webpack-env@npm:1.18.5":
   version: 1.18.5
   resolution: "@types/webpack-env@npm:1.18.5"
@@ -7291,6 +7355,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"await-lock@npm:^2.2.2":
+  version: 2.2.2
+  resolution: "await-lock@npm:2.2.2"
+  checksum: bedf00dad44c6325a655bf3bd523ab9e1ce41023da6a8c379990c76ac1d942ac7e5301627ab84ba37917ab5247506ba429b7f6e4bf77074093f255571b9ad5ee
+  languageName: node
+  linkType: hard
+
 "axe-core@npm:=4.7.0":
   version: 4.7.0
   resolution: "axe-core@npm:4.7.0"
@@ -7730,6 +7801,23 @@ __metadata:
   checksum: e4b53deb4f2b85c52be0e21a273f2045c7b6a6ea002b0e139c744cb6f95e9ec044439a52883b0d74dedd1ff3da55ed140cfdddfed7fb0cccbed373de5dce1bcf
   languageName: node
   linkType: hard
+
+"botworker@workspace:botworker":
+  version: 0.0.0-use.local
+  resolution: "botworker@workspace:botworker"
+  dependencies:
+    "@atproto/api": ^0.12.25
+    "@types/tracery-grammar": ^2.7.4
+    cron-async: ^1.0.5
+    dotenv: ^16.4.5
+    pino: ^9.3.1
+    pino-pretty: ^11.2.1
+    prisma: 5.14.0
+    tracery-grammar: ^2.7.4
+    ts-node: ^10.9.2
+    typescript: ^5.5.4
+  languageName: unknown
+  linkType: soft
 
 "boxen@npm:5.1.2":
   version: 5.1.2
@@ -8613,7 +8701,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"colorette@npm:^2.0.10, colorette@npm:^2.0.14, colorette@npm:^2.0.16, colorette@npm:^2.0.20":
+"colorette@npm:^2.0.10, colorette@npm:^2.0.14, colorette@npm:^2.0.16, colorette@npm:^2.0.20, colorette@npm:^2.0.7":
   version: 2.0.20
   resolution: "colorette@npm:2.0.20"
   checksum: e94116ff33b0ff56f3b83b9ace895e5bf87c2a7a47b3401b8c3f3226e050d5ef76cf4072fb3325f9dc24d1698f9b730baf4e05eeaf861d74a1883073f4c98a40
@@ -9051,6 +9139,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cron-async@npm:^1.0.5":
+  version: 1.0.5
+  resolution: "cron-async@npm:1.0.5"
+  dependencies:
+    cron-schedule: ^3.0.6
+  checksum: 78b6bb0587d38564b1fb5ee05a07d8c47aa416f7846b992b40f20495c69644bcf168fa507ed1dc6da1c5e4e4c16b9d80070dd55429f3bd4c2c54a9b9075e43bb
+  languageName: node
+  linkType: hard
+
+"cron-schedule@npm:^3.0.6":
+  version: 3.0.6
+  resolution: "cron-schedule@npm:3.0.6"
+  checksum: e41963db8f2673f1e791c64eb16f5d78bf51079324ed890ce4a26b36ca7383568e3f32153c15f73e1aafa758de13cc35541655a22beb2baf0e0e5076acea55f5
+  languageName: node
+  linkType: hard
+
 "cross-env@npm:7.0.3":
   version: 7.0.3
   resolution: "cross-env@npm:7.0.3"
@@ -9427,6 +9531,13 @@ __metadata:
   dependencies:
     "@babel/runtime": "npm:^7.21.0"
   checksum: e4b521fbf22bc8c3db332bbfb7b094fd3e7627de0259a9d17c7551e2d2702608a7307a449206065916538e384f37b181565447ce2637ae09828427aed9cb5581
+  languageName: node
+  linkType: hard
+
+"dateformat@npm:^4.6.3":
+  version: 4.6.3
+  resolution: "dateformat@npm:4.6.3"
+  checksum: e2023b905e8cfe2eb8444fb558562b524807a51cdfe712570f360f873271600b5c94aebffaf11efb285e2c072264a7cf243eadb68f3eba0f8cc85fb86cd25df6
   languageName: node
   linkType: hard
 
@@ -9953,7 +10064,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dotenv@npm:16.4.5, dotenv@npm:^16.0.0":
+"dotenv@npm:16.4.5, dotenv@npm:^16.0.0, dotenv@npm:^16.4.5":
   version: 16.4.5
   resolution: "dotenv@npm:16.4.5"
   checksum: 48d92870076832af0418b13acd6e5a5a3e83bb00df690d9812e94b24aff62b88ade955ac99a05501305b8dc8f1b0ee7638b18493deb6fe93d680e5220936292f
@@ -11107,6 +11218,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"fast-copy@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "fast-copy@npm:3.0.2"
+  checksum: 02e8b9fd03c8c024d2987760ce126456a0e17470850b51e11a1c3254eed6832e4733ded2d93316c82bc0b36aeb991ad1ff48d1ba95effe7add7c3ab8d8eb554a
+  languageName: node
+  linkType: hard
+
 "fast-decode-uri-component@npm:^1.0.1":
   version: 1.0.1
   resolution: "fast-decode-uri-component@npm:1.0.1"
@@ -11197,6 +11315,13 @@ __metadata:
   version: 3.5.0
   resolution: "fast-redact@npm:3.5.0"
   checksum: 7e2ce4aad6e7535e0775bf12bd3e4f2e53d8051d8b630e0fa9e67f68cb0b0e6070d2f7a94b1d0522ef07e32f7c7cda5755e2b677a6538f1e9070ca053c42343a
+  languageName: node
+  linkType: hard
+
+"fast-safe-stringify@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "fast-safe-stringify@npm:2.1.1"
+  checksum: d90ec1c963394919828872f21edaa3ad6f1dddd288d2bd4e977027afff09f5db40f94e39536d4646f7e01761d704d72d51dce5af1b93717f3489ef808f5f4e4d
   languageName: node
   linkType: hard
 
@@ -12342,6 +12467,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"help-me@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "help-me@npm:5.0.0"
+  checksum: 054c0e2e9ae2231c85ab5e04f75109b9d068ffcc54e58fb22079822a5ace8ff3d02c66fd45379c902ad5ab825e5d2e1451fcc2f7eab1eb49e7d488133ba4cacb
+  languageName: node
+  linkType: hard
+
 "hmac-drbg@npm:^1.0.1":
   version: 1.0.1
   resolution: "hmac-drbg@npm:1.0.1"
@@ -13370,6 +13502,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"iso-datestring-validator@npm:^2.2.2":
+  version: 2.2.2
+  resolution: "iso-datestring-validator@npm:2.2.2"
+  checksum: 34f05a6ac62f311feda19328c033d94a2a52789d07b9863fec304ed11f69f8bba7922dc6fef5b88a53bd722ddfd9446a2433cb29459885549f69af16672b6f74
+  languageName: node
+  linkType: hard
+
 "isobject@npm:^2.0.0":
   version: 2.1.0
   resolution: "isobject@npm:2.1.0"
@@ -13996,6 +14135,13 @@ __metadata:
   version: 4.15.9
   resolution: "jose@npm:4.15.9"
   checksum: 4ed4ddf4a029db04bd167f2215f65d7245e4dc5f36d7ac3c0126aab38d66309a9e692f52df88975d99429e357e5fd8bab340ff20baab544d17684dd1d940a0f4
+  languageName: node
+  linkType: hard
+
+"joycon@npm:^3.1.1":
+  version: 3.1.1
+  resolution: "joycon@npm:3.1.1"
+  checksum: 131fb1e98c9065d067fd49b6e685487ac4ad4d254191d7aa2c9e3b90f4e9ca70430c43cad001602bdbdabcf58717d3b5c5b7461c1bd8e39478c8de706b3fe6ae
   languageName: node
   linkType: hard
 
@@ -15448,6 +15594,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"multiformats@npm:^9.4.2, multiformats@npm:^9.9.0":
+  version: 9.9.0
+  resolution: "multiformats@npm:9.9.0"
+  checksum: 1fdb34fd2fb085142665e8bd402570659b50a5fae5994027e1df3add9e1ce1283ed1e0c2584a5c63ac0a58e871b8ee9665c4a99ca36ce71032617449d48aa975
+  languageName: node
+  linkType: hard
+
 "multimatch@npm:^4.0.0":
   version: 4.0.0
   resolution: "multimatch@npm:4.0.0"
@@ -16412,13 +16565,37 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pino-abstract-transport@npm:^1.2.0":
+"pino-abstract-transport@npm:^1.0.0, pino-abstract-transport@npm:^1.2.0":
   version: 1.2.0
   resolution: "pino-abstract-transport@npm:1.2.0"
   dependencies:
     readable-stream: "npm:^4.0.0"
     split2: "npm:^4.0.0"
   checksum: b4ab59529b7a91f488440147fc58ee0827a6c1c5ca3627292339354b1381072c1a6bfa9b46d03ad27872589e8477ecf74da12cf286e1e6b665ac64a3b806bf07
+  languageName: node
+  linkType: hard
+
+"pino-pretty@npm:^11.2.1":
+  version: 11.2.1
+  resolution: "pino-pretty@npm:11.2.1"
+  dependencies:
+    colorette: ^2.0.7
+    dateformat: ^4.6.3
+    fast-copy: ^3.0.2
+    fast-safe-stringify: ^2.1.1
+    help-me: ^5.0.0
+    joycon: ^3.1.1
+    minimist: ^1.2.6
+    on-exit-leak-free: ^2.1.0
+    pino-abstract-transport: ^1.0.0
+    pump: ^3.0.0
+    readable-stream: ^4.0.0
+    secure-json-parse: ^2.4.0
+    sonic-boom: ^4.0.1
+    strip-json-comments: ^3.1.1
+  bin:
+    pino-pretty: bin.js
+  checksum: 6c7f15b5bf8a007c8b7157eae445675b13cd95097ffa512d5ebd661f9e7abd328fa27592b25708756a09f098f87cb03ca81837518cd725c16e3f801129b941d4
   languageName: node
   linkType: hard
 
@@ -16475,6 +16652,27 @@ __metadata:
   bin:
     pino: bin.js
   checksum: 5fbd226ff7dab0961232b5aa5eca0530cdc5bb29f6bf17d929e42239293b1a587a26cc311db6abc1090c9dd57e8f7b031eae341b41d00d4a642b4f1736474c80
+  languageName: node
+  linkType: hard
+
+"pino@npm:^9.3.1":
+  version: 9.3.1
+  resolution: "pino@npm:9.3.1"
+  dependencies:
+    atomic-sleep: ^1.0.0
+    fast-redact: ^3.1.1
+    on-exit-leak-free: ^2.1.0
+    pino-abstract-transport: ^1.2.0
+    pino-std-serializers: ^7.0.0
+    process-warning: ^3.0.0
+    quick-format-unescaped: ^4.0.3
+    real-require: ^0.2.0
+    safe-stable-stringify: ^2.3.1
+    sonic-boom: ^4.0.1
+    thread-stream: ^3.0.0
+  bin:
+    pino: bin.js
+  checksum: ab1e81b3e5a91852136d80a592939883eeb81442e5d3a2c070bdbdeb47c5aaa297ead246530b10eb6d5ff59445f4645d1333d342f255d9f002f73aea843e74ee
   languageName: node
   linkType: hard
 
@@ -19533,6 +19731,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tlds@npm:^1.234.0":
+  version: 1.254.0
+  resolution: "tlds@npm:1.254.0"
+  bin:
+    tlds: bin.js
+  checksum: 7ccb62a9781f0caa43a8f0240f84013c2b2fb93df1afb0237fb52c0893791912a2ea02bd47f689e4ea7f576db3db91187b8d1c863182887229e393da874fb44b
+  languageName: node
+  linkType: hard
+
 "tmp@npm:^0.0.33":
   version: 0.0.33
   resolution: "tmp@npm:0.0.33"
@@ -19668,6 +19875,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"tracery-grammar@npm:^2.7.4":
+  version: 2.7.4
+  resolution: "tracery-grammar@npm:2.7.4"
+  checksum: 49aaaa492bba3e4859180693d7ab4bf7de8aa3eb278171d76b074d03a04f1a52a796f26564d4163187e397c80e1423dd80c87fe5530dd569412147284df7e635
+  languageName: node
+  linkType: hard
+
 "tree-kill@npm:^1.2.2":
   version: 1.2.2
   resolution: "tree-kill@npm:1.2.2"
@@ -19713,7 +19927,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ts-node@npm:10.9.2":
+"ts-node@npm:10.9.2, ts-node@npm:^10.9.2":
   version: 10.9.2
   resolution: "ts-node@npm:10.9.2"
   dependencies:
@@ -19939,6 +20153,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"typescript@npm:^5.5.4":
+  version: 5.5.4
+  resolution: "typescript@npm:5.5.4"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 422be60f89e661eab29ac488c974b6cc0a660fb2228003b297c3d10c32c90f3bcffc1009b43876a082515a3c376b1eefcce823d6e78982e6878408b9a923199c
+  languageName: node
+  linkType: hard
+
+"typescript@patch:typescript@^5.5.4#~builtin<compat/typescript>":
+  version: 5.5.4
+  resolution: "typescript@patch:typescript@npm%3A5.5.4#~builtin<compat/typescript>::version=5.5.4&hash=14eedb"
+  bin:
+    tsc: bin/tsc
+    tsserver: bin/tsserver
+  checksum: 10dd9881baba22763de859e8050d6cb6e2db854197495c6f1929b08d1eb2b2b00d0b5d9b0bcee8472f1c3f4a7ef6a5d7ebe0cfd703f853aa5ae465b8404bc1ba
+  languageName: node
+  linkType: hard
+
 "typescript@patch:typescript@npm%3A5.4.5#~builtin<compat/typescript>":
   version: 5.4.5
   resolution: "typescript@patch:typescript@npm%3A5.4.5#~builtin<compat/typescript>::version=5.4.5&hash=14eedb"
@@ -19953,6 +20187,15 @@ __metadata:
   version: 1.0.38
   resolution: "ua-parser-js@npm:1.0.38"
   checksum: b1dd11b87e1784c79f7129e9aec679753fccf8a9b22f5202b79b19492635b5b46b779607a3cfae0270999a0d48da223bf94015642d2abee69d83c9069ab37bd0
+  languageName: node
+  linkType: hard
+
+"uint8arrays@npm:3.0.0":
+  version: 3.0.0
+  resolution: "uint8arrays@npm:3.0.0"
+  dependencies:
+    multiformats: ^9.4.2
+  checksum: 19efb7d2ba20ec2550d1ca5b453c01ad62e70098e6454d0a446b12991fa5f3286f8ee979e5cec020fac6b4cbbaad4597024dcc8b2c69365af95443cce1323e34
   languageName: node
   linkType: hard
 
@@ -21321,5 +21564,12 @@ __metadata:
     compress-commons: "npm:^6.0.2"
     readable-stream: "npm:^4.0.0"
   checksum: 50f2fb30327fb9d09879abf7ae2493705313adf403e794b030151aaae00009162419d60d0519e807673ec04d442e140c8879ca14314df0a0192de3b233e8f28b
+  languageName: node
+  linkType: hard
+
+"zod@npm:^3.21.4":
+  version: 3.23.8
+  resolution: "zod@npm:3.23.8"
+  checksum: 8f14c87d6b1b53c944c25ce7a28616896319d95bc46a9660fe441adc0ed0a81253b02b5abdaeffedbeb23bdd25a0bf1c29d2c12dd919aef6447652dd295e3e69
   languageName: node
   linkType: hard

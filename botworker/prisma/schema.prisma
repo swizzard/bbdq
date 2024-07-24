@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model bot {
+  id               String      @id
+  author_id        String?
+  grammar          String
+  is_public        Boolean     @default(false)
+  enabled          Boolean     @default(false)
+  identifier       String
+  atproto_password String
+  schedule         Schedule
+  bot_author       bot_author? @relation(fields: [author_id], references: [id])
+}
+
+model bot_author {
+  id                     String @id
+  external_auth_provider String @default("auth0")
+  external_auth_id       String
+  bot                    bot[]
+}
+
+enum Schedule {
+  EVERY_10_MINUTES
+  EVERY_30_MINUTES
+  EVERY_1_HOURS
+  EVERY_2_HOURS
+  EVERY_6_HOURS
+  EVERY_12_HOURS
+  EVERY_1_DAYS
+  EVERY_2_DAYS
+  EVERY_1_WEEKS
+}

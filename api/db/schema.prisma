@@ -5,7 +5,7 @@
 // https://www.prisma.io/docs/orm/prisma-migrate
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -14,11 +14,37 @@ generator client {
   binaryTargets = "native"
 }
 
-// Define your own datamodels here and run `yarn redwood prisma migrate dev`
-// to create migrations for them and apply to your dev DB.
-// TODO: Please remove the following example:
-model UserExample {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+
+model BotAuthor {
+  id       String @id @default(cuid())
+  externalAuthProvider String @map(name: "external_auth_provider") @default("auth0")
+  externalAuthId String @map(name: "external_auth_id")
+  bots Bot[]
+  @@map("bot_author")
+}
+
+model Bot {
+  id       String @id @default(cuid())
+  author   BotAuthor? @relation(fields: [authorId], references: [id])
+  authorId String? @map(name: "author_id")
+  grammar String
+  isPublic Boolean @default(false) @map(name: "is_public")
+  enabled Boolean @default(false)
+  identifier String
+  password String @map(name: "atproto_password")
+  schedule Schedule
+
+  @@map("bot")
+}
+
+enum Schedule {
+  EVERY_10_MINUTES
+  EVERY_30_MINUTES
+  EVERY_1_HOURS
+  EVERY_2_HOURS
+  EVERY_6_HOURS
+  EVERY_12_HOURS
+  EVERY_1_DAYS
+  EVERY_2_DAYS
+  EVERY_1_WEEKS
 }
