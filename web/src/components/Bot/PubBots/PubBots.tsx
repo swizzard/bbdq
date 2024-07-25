@@ -9,7 +9,7 @@ import { useMutation } from '@redwoodjs/web'
 import type { TypedDocumentNode } from '@redwoodjs/web'
 import { toast } from '@redwoodjs/web/toast'
 
-import { QUERY } from 'src/components/Bot/BotsCell'
+import { QUERY } from 'src/components/Bot/PubBotsCell/PubBotsCell'
 import {
   checkboxInputTag,
   formatEnum,

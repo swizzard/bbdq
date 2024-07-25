@@ -11,6 +11,15 @@ export const schema = gql`
     updatedAt: DateTime!
   }
 
+  type PubBot {
+    id: String!
+    grammar: String!
+    identifier: String!
+    schedule: Schedule!
+    createdAt: DateTime!
+    updatedAt: DateTime
+  }
+
   enum Schedule {
     EVERY_10_MINUTES
     EVERY_30_MINUTES
@@ -24,8 +33,9 @@ export const schema = gql`
   }
 
   type Query {
-    bots: [Bot!]! @requireAuth
-    bot(id: String!): Bot @requireAuth
+    pubBots: [PubBot]! @skipAuth
+    pubBot(identifier: String!): PubBot @skipAuth
+    bot(identifier: String!, password: String!): Bot @skipAuth
   }
 
   input CreateBotInput {
@@ -47,8 +57,8 @@ export const schema = gql`
   }
 
   type Mutation {
-    createBot(input: CreateBotInput!): Bot! @requireAuth
-    updateBot(id: String!, input: UpdateBotInput!): Bot! @requireAuth
-    deleteBot(id: String!): Bot! @requireAuth
+    createBot(input: CreateBotInput!): Bot! @skipAuth
+    updateBot(id: String!, input: UpdateBotInput!): Bot! @skipAuth
+    deleteBot(id: String!): Bot! @skipAuth
   }
 `

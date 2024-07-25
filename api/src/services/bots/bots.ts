@@ -2,13 +2,33 @@ import type { QueryResolvers, MutationResolvers } from 'types/graphql'
 
 import { db } from 'src/lib/db'
 
-export const bots: QueryResolvers['bots'] = () => {
-  return db.bot.findMany()
+const pubSelect = {
+  id: true,
+  grammar: true,
+  identifier: true,
+  schedule: true,
+  createdAt: true,
+  updatedAt: true,
 }
 
-export const bot: QueryResolvers['bot'] = ({ id }) => {
-  return db.bot.findUnique({
-    where: { id },
+export const pubBots: QueryResolvers['pubBots'] = () => {
+  return db.bot.findMany({
+    where: { isPublic: true, enabled: true },
+    select: pubSelect,
+  })
+}
+
+export const pubBot: QueryResolvers['pubBot'] = ({ identifier }) => {
+  return db.bot.findFirst({
+    where: { identifier },
+    orderBy: { updatedAt: 'desc' },
+    select: pubSelect,
+  })
+}
+
+export const bot: QueryResolvers['bot'] = ({ identifier, password }) => {
+  return db.bot.findFirst({
+    where: { identifier, password },
   })
 }
 
@@ -26,7 +46,8 @@ export const updateBot: MutationResolvers['updateBot'] = ({ id, input }) => {
 }
 
 export const deleteBot: MutationResolvers['deleteBot'] = ({ id }) => {
-  return db.bot.delete({
+  return db.bot.update({
     where: { id },
+    data: { isPublic: false, enabled: false },
   })
 }

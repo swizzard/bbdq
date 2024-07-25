@@ -1,7 +1,7 @@
-import BotsCell from 'src/components/Bot/BotsCell'
+import PubBotsCell from 'src/components/Bot/PubBotsCell'
 
 const BotsPage = () => {
-  return <BotsCell />
+  return <PubBotsCell />
 }
 
 export default BotsPage

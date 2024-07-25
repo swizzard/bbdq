@@ -7,17 +7,14 @@ import type {
   TypedDocumentNode,
 } from '@redwoodjs/web'
 
-import Bots from 'src/components/Bot/Bots'
+import Bots from 'src/components/Bot/PubBots/PubBots'
 
 export const QUERY: TypedDocumentNode<FindBots, FindBotsVariables> = gql`
   query FindBots {
-    bots {
+    pubBots {
       id
       grammar
-      isPublic
-      enabled
       identifier
-      password
       schedule
       createdAt
       updatedAt

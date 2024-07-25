@@ -9,8 +9,11 @@ import type {
 import Bot from 'src/components/Bot/Bot'
 
 export const QUERY: TypedDocumentNode<FindBotById, FindBotByIdVariables> = gql`
-  query FindBotById($id: String!) {
-    bot: bot(id: $id) {
+  query FindBotByIdentifierAndPassword(
+    $identifier: String!
+    $password: String!
+  ) {
+    bot: bot(identifier: $identifier, password: $password) {
       id
       grammar
       isPublic

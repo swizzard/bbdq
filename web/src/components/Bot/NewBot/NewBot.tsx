@@ -17,7 +17,8 @@ const CREATE_BOT_MUTATION: TypedDocumentNode<
 > = gql`
   mutation CreateBotMutation($input: CreateBotInput!) {
     createBot(input: $input) {
-      id
+      identifier
+      password
     }
   }
 `

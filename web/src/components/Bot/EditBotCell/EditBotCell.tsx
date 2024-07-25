@@ -16,8 +16,11 @@ import { toast } from '@redwoodjs/web/toast'
 import BotForm from 'src/components/Bot/BotForm'
 
 export const QUERY: TypedDocumentNode<EditBotById> = gql`
-  query EditBotById($id: String!) {
-    bot: bot(id: $id) {
+  query EditBotByIdentifierAndPassword(
+    $identifier: String!
+    $password: String!
+  ) {
+    bot: bot(identifier: $identifier, password: $password) {
       id
       grammar
       isPublic
