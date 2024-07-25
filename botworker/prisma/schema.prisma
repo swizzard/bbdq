@@ -8,22 +8,15 @@ datasource db {
 }
 
 model bot {
-  id               String      @id
-  author_id        String?
+  id               String   @id
   grammar          String
-  is_public        Boolean     @default(false)
-  enabled          Boolean     @default(false)
+  is_public        Boolean  @default(false)
+  enabled          Boolean  @default(false)
   identifier       String
   atproto_password String
   schedule         Schedule
-  bot_author       bot_author? @relation(fields: [author_id], references: [id])
-}
-
-model bot_author {
-  id                     String @id
-  external_auth_provider String @default("auth0")
-  external_auth_id       String
-  bot                    bot[]
+  created_at       DateTime @default(now())
+  updated_at       DateTime
 }
 
 enum Schedule {

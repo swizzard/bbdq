@@ -11,7 +11,7 @@ const retryLimit = parseInt(process.env.TRACERY_RETRY_LIMIT ?? '10')
 // tracery and its types are packaged a little oddly
 type TG = ReturnType<typeof tracery.createGrammar>
 
-type PostData = Pick<BotToRun, 'identifier' | 'atproto_password'> & {
+type PostData = Pick<BotToRun, 'identifier' | 'password'> & {
   text: string
 }
 export default async function runBots(bots: Array<BotToRun>): Promise<void> {
@@ -22,8 +22,7 @@ export default async function runBots(bots: Array<BotToRun>): Promise<void> {
       await postText(agent, { ...bot, text })
     } catch (e: any) {
       logger.error(
-        `Bot ${bot.identifier} failed to post: ${
-          e.message ?? JSON.stringify(e)
+        `Bot ${bot.identifier} failed to post: ${e.message ?? JSON.stringify(e)
         }`
       )
     }
@@ -32,7 +31,7 @@ export default async function runBots(bots: Array<BotToRun>): Promise<void> {
 
 async function postText(
   agent: BskyAgent,
-  { identifier, atproto_password: password, text }: PostData
+  { identifier, password, text }: PostData
 ) {
   logger.info(`Posting to ${identifier}`)
   await agent.login({ identifier, password })

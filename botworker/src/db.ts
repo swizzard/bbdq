@@ -1,7 +1,7 @@
-import { bot, Schedule, PrismaClient } from '@prisma/client'
+import { Bot, Schedule, PrismaClient } from '@prisma/client'
 export { type Schedule } from '@prisma/client'
 
-export type BotToRun = Pick<bot, 'grammar' | 'identifier' | 'atproto_password'>
+export type BotToRun = Pick<Bot, 'grammar' | 'identifier' | 'password'>
 export default async function getBotsToRun(
   schedule: Schedule
 ): Promise<Array<BotToRun>> {
@@ -14,7 +14,7 @@ export default async function getBotsToRun(
     select: {
       grammar: true,
       identifier: true,
-      atproto_password: true,
+      password: true,
     },
   })
 }
