@@ -15,24 +15,16 @@ generator client {
 }
 
 
-model BotAuthor {
-  id       String @id @default(cuid())
-  externalAuthProvider String @map(name: "external_auth_provider") @default("auth0")
-  externalAuthId String @map(name: "external_auth_id")
-  bots Bot[]
-  @@map("bot_author")
-}
-
 model Bot {
   id       String @id @default(cuid())
-  author   BotAuthor? @relation(fields: [authorId], references: [id])
-  authorId String? @map(name: "author_id")
   grammar String
   isPublic Boolean @default(false) @map(name: "is_public")
   enabled Boolean @default(false)
   identifier String
   password String @map(name: "atproto_password")
   schedule Schedule
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @updatedAt @map(name: "updated_at")
 
   @@map("bot")
 }

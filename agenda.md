@@ -30,7 +30,9 @@
 
 - [ ] bot
   - [ ] create
+    - [ ] preview sample output
   - [ ] edit
+    - [ ] preview sample output
   - [ ] delete
   - [ ] list (iff user)
     - controls in list? which?
