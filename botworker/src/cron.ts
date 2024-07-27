@@ -1,6 +1,7 @@
+import { PrismaClient } from '@prisma/client'
 import { JobConfig } from 'cron-async'
 import { Schedule } from '@prisma/client'
-import getBots from './db'
+import { getBotsToRun } from './db'
 import runBots from './bsky'
 import logger from './logger'
 
@@ -49,6 +50,7 @@ export default crons
 
 async function run(schedule: Schedule) {
   logger.info(`Running ${schedule}`)
-  const bots = await getBots(schedule)
-  await runBots(bots)
+  const client = new PrismaClient()
+  const bots = await getBotsToRun(client, schedule)
+  await runBots(client, bots)
 }

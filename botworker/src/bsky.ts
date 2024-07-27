@@ -1,6 +1,7 @@
 import { BskyAgent } from '@atproto/api'
+import { PrismaClient } from '@prisma/client'
 import tracery from 'tracery-grammar'
-import { BotToRun } from './db'
+import { BotToRun, updateBot } from './db'
 import logger from './logger'
 
 const service = process.env.BSKY_SERVICE || 'https://bsky.social'
@@ -14,17 +15,33 @@ type TG = ReturnType<typeof tracery.createGrammar>
 type PostData = Pick<BotToRun, 'identifier' | 'password'> & {
   text: string
 }
-export default async function runBots(bots: Array<BotToRun>): Promise<void> {
+export default async function runBots(
+  client: PrismaClient,
+  bots: Array<BotToRun>
+): Promise<void> {
   const agent = new BskyAgent({ service })
   for (const bot of bots) {
+    await runBot(client, agent, bot)
+  }
+}
+
+async function runBot(
+  client: PrismaClient,
+  agent: BskyAgent,
+  bot: BotToRun
+): Promise<void> {
+  let error: string | undefined
+  try {
+    const text = generateText(bot.grammar)
+    await postText(agent, { ...bot, text })
+  } catch (e: any) {
+    error = e.message ?? JSON.stringify(e)
+    logger.error(`Bot ${bot.identifier} failed to post: ${error}`)
+  } finally {
     try {
-      const text = generateText(bot.grammar)
-      await postText(agent, { ...bot, text })
+      await updateBot(client, bot.id, error)
     } catch (e: any) {
-      logger.error(
-        `Bot ${bot.identifier} failed to post: ${e.message ?? JSON.stringify(e)
-        }`
-      )
+      logger.error(`Failed to update bot ${bot.id}: ${e.message}`)
     }
   }
 }

@@ -15,6 +15,7 @@ export const pubBots: QueryResolvers['pubBots'] = () => {
   return db.bot.findMany({
     where: { isPublic: true, enabled: true },
     select: pubSelect,
+    orderBy: { identifier: 'asc', updatedAt: 'desc' },
   })
 }
 
@@ -34,13 +35,13 @@ export const bot: QueryResolvers['bot'] = ({ identifier, password }) => {
 
 export const createBot: MutationResolvers['createBot'] = ({ input }) => {
   return db.bot.create({
-    data: input,
+    data: { ...input, updatedAt: new Date() },
   })
 }
 
 export const updateBot: MutationResolvers['updateBot'] = ({ id, input }) => {
   return db.bot.update({
-    data: input,
+    data: { ...input, updatedAt: new Date() },
     where: { id },
   })
 }
@@ -48,6 +49,6 @@ export const updateBot: MutationResolvers['updateBot'] = ({ id, input }) => {
 export const deleteBot: MutationResolvers['deleteBot'] = ({ id }) => {
   return db.bot.update({
     where: { id },
-    data: { isPublic: false, enabled: false },
+    data: { isPublic: false, enabled: false, updatedAt: new Date() },
   })
 }

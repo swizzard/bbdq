@@ -9,6 +9,8 @@ export const schema = gql`
     schedule: Schedule!
     createdAt: DateTime!
     updatedAt: DateTime!
+    lastPostAt: DateTime
+    lastError: String
   }
 
   type PubBot {

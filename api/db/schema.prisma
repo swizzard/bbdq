@@ -24,7 +24,9 @@ model Bot {
   password String @map(name: "atproto_password")
   schedule Schedule
   createdAt DateTime @default(now()) @map(name: "created_at")
-  updatedAt DateTime @updatedAt @map(name: "updated_at")
+  updatedAt DateTime @map(name: "updated_at")
+  lastPostAt DateTime? @map(name: "last_post_at")
+  lastError String? @map(name: "last_error")
 
   @@map("bot")
 }

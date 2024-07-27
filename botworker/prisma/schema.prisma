@@ -8,15 +8,17 @@ datasource db {
 }
 
 model bot {
-  id               String   @id
+  id               String    @id
   grammar          String
-  is_public        Boolean  @default(false)
-  enabled          Boolean  @default(false)
-  identifier       String
+  is_public        Boolean   @default(false)
+  enabled          Boolean   @default(false)
+  identifier       String    @unique
   atproto_password String
   schedule         Schedule
-  created_at       DateTime @default(now())
+  created_at       DateTime  @default(now())
   updated_at       DateTime
+  last_post_at     DateTime?
+  last_error       String?
 }
 
 enum Schedule {

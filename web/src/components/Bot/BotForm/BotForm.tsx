@@ -1,4 +1,7 @@
-import type { EditBotById, UpdateBotInput } from 'types/graphql'
+import type {
+  EditBotByIdentifierAndPassword,
+  UpdateBotInput,
+} from 'types/graphql'
 
 import type { RWGqlError } from '@redwoodjs/forms'
 import {
@@ -10,12 +13,15 @@ import {
   CheckboxField,
   RadioField,
   Submit,
+  TextAreaField,
+  PasswordField,
+  SelectField,
 } from '@redwoodjs/forms'
 
-type FormBot = NonNullable<EditBotById['bot']>
+type FormBot = NonNullable<EditBotByIdentifierAndPassword['bot']>
 
 interface BotFormProps {
-  bot?: EditBotById['bot']
+  bot?: EditBotByIdentifierAndPassword['bot']
   onSave: (data: UpdateBotInput, id?: FormBot['id']) => void
   error: RWGqlError
   loading: boolean
@@ -35,6 +41,76 @@ const BotForm = (props: BotFormProps) => {
           titleClassName="rw-form-error-title"
           listClassName="rw-form-error-list"
         />
+        <Label
+          name="identifier"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Identifier
+        </Label>
+
+        <TextField
+          name="identifier"
+          defaultValue={props.bot?.identifier}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          validation={{ required: true }}
+        />
+
+        <FieldError name="identifier" className="rw-field-error" />
+
+        <Label
+          name="password"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Password
+        </Label>
+
+        <PasswordField
+          name="password"
+          defaultValue={props.bot?.password}
+          className="rw-input"
+          errorClassName="rw-input rw-input-error"
+          validation={{ required: true }}
+        />
+
+        <FieldError name="password" className="rw-field-error" />
+
+        <Label
+          name="schedule"
+          className="rw-label"
+          errorClassName="rw-label rw-label-error"
+        >
+          Schedule
+        </Label>
+
+        <SelectField
+          name="schedule"
+          validation={{
+            required: true,
+            validate: {
+              matchesInitialValue: (value: string) =>
+                value !== 'Please select a posting schedule' ||
+                'Select an Option',
+            },
+          }}
+        >
+          <option value="Please select a posting schedule">
+            Please select a posting schedule
+          </option>
+          <option value="EVERY_10_MINUTES">Every 10 minutes</option>
+          <option value="EVERY_30_MINUTES">Every 30 minutes</option>
+          <option value="EVERY_1_HOURS">Every 1 hours</option>
+          <option value="EVERY_2_HOURS">Every 2 hours</option>
+          <option value="EVERY_6_HOURS">Every 6 hours</option>
+          <option value="EVERY_12_HOURS">Every 12 hours</option>
+          <option value="EVERY_1_DAYS">Every 1 days</option>
+          <option value="EVERY_2_DAYS">Every 2 days</option>
+          <option value="EVERY_1_WEEKS">Every 1 weeks</option>
+        </SelectField>
+
+        <FieldError name="schedule" className="rw-field-error" />
 
         <Label
           name="grammar"
@@ -44,7 +120,7 @@ const BotForm = (props: BotFormProps) => {
           Grammar
         </Label>
 
-        <TextField
+        <TextAreaField
           name="grammar"
           defaultValue={props.bot?.grammar}
           className="rw-input"
@@ -87,160 +163,6 @@ const BotForm = (props: BotFormProps) => {
         />
 
         <FieldError name="enabled" className="rw-field-error" />
-
-        <Label
-          name="identifier"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Identifier
-        </Label>
-
-        <TextField
-          name="identifier"
-          defaultValue={props.bot?.identifier}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
-        />
-
-        <FieldError name="identifier" className="rw-field-error" />
-
-        <Label
-          name="password"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Password
-        </Label>
-
-        <TextField
-          name="password"
-          defaultValue={props.bot?.password}
-          className="rw-input"
-          errorClassName="rw-input rw-input-error"
-          validation={{ required: true }}
-        />
-
-        <FieldError name="password" className="rw-field-error" />
-
-        <Label
-          name="schedule"
-          className="rw-label"
-          errorClassName="rw-label rw-label-error"
-        >
-          Schedule
-        </Label>
-
-        <div className="rw-check-radio-items">
-          <RadioField
-            id="bot-schedule-0"
-            name="schedule"
-            defaultValue="EVERY_10_MINUTES"
-            defaultChecked={props.bot?.schedule?.includes('EVERY_10_MINUTES')}
-            className="rw-input"
-            errorClassName="rw-input rw-input-error"
-          />
-          <div>Every 10_minutes</div>
-        </div>
-
-        <div className="rw-check-radio-items">
-          <RadioField
-            id="bot-schedule-1"
-            name="schedule"
-            defaultValue="EVERY_30_MINUTES"
-            defaultChecked={props.bot?.schedule?.includes('EVERY_30_MINUTES')}
-            className="rw-input"
-            errorClassName="rw-input rw-input-error"
-          />
-          <div>Every 30_minutes</div>
-        </div>
-
-        <div className="rw-check-radio-items">
-          <RadioField
-            id="bot-schedule-2"
-            name="schedule"
-            defaultValue="EVERY_1_HOURS"
-            defaultChecked={props.bot?.schedule?.includes('EVERY_1_HOURS')}
-            className="rw-input"
-            errorClassName="rw-input rw-input-error"
-          />
-          <div>Every 1_hours</div>
-        </div>
-
-        <div className="rw-check-radio-items">
-          <RadioField
-            id="bot-schedule-3"
-            name="schedule"
-            defaultValue="EVERY_2_HOURS"
-            defaultChecked={props.bot?.schedule?.includes('EVERY_2_HOURS')}
-            className="rw-input"
-            errorClassName="rw-input rw-input-error"
-          />
-          <div>Every 2_hours</div>
-        </div>
-
-        <div className="rw-check-radio-items">
-          <RadioField
-            id="bot-schedule-4"
-            name="schedule"
-            defaultValue="EVERY_6_HOURS"
-            defaultChecked={props.bot?.schedule?.includes('EVERY_6_HOURS')}
-            className="rw-input"
-            errorClassName="rw-input rw-input-error"
-          />
-          <div>Every 6_hours</div>
-        </div>
-
-        <div className="rw-check-radio-items">
-          <RadioField
-            id="bot-schedule-5"
-            name="schedule"
-            defaultValue="EVERY_12_HOURS"
-            defaultChecked={props.bot?.schedule?.includes('EVERY_12_HOURS')}
-            className="rw-input"
-            errorClassName="rw-input rw-input-error"
-          />
-          <div>Every 12_hours</div>
-        </div>
-
-        <div className="rw-check-radio-items">
-          <RadioField
-            id="bot-schedule-6"
-            name="schedule"
-            defaultValue="EVERY_1_DAYS"
-            defaultChecked={props.bot?.schedule?.includes('EVERY_1_DAYS')}
-            className="rw-input"
-            errorClassName="rw-input rw-input-error"
-          />
-          <div>Every 1_days</div>
-        </div>
-
-        <div className="rw-check-radio-items">
-          <RadioField
-            id="bot-schedule-7"
-            name="schedule"
-            defaultValue="EVERY_2_DAYS"
-            defaultChecked={props.bot?.schedule?.includes('EVERY_2_DAYS')}
-            className="rw-input"
-            errorClassName="rw-input rw-input-error"
-          />
-          <div>Every 2_days</div>
-        </div>
-
-        <div className="rw-check-radio-items">
-          <RadioField
-            id="bot-schedule-8"
-            name="schedule"
-            defaultValue="EVERY_1_WEEKS"
-            defaultChecked={props.bot?.schedule?.includes('EVERY_1_WEEKS')}
-            className="rw-input"
-            errorClassName="rw-input rw-input-error"
-          />
-          <div>Every 1_weeks</div>
-        </div>
-
-        <FieldError name="schedule" className="rw-field-error" />
 
         <div className="rw-button-group">
           <Submit disabled={props.loading} className="rw-button rw-button-blue">
